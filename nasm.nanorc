@@ -1,0 +1,74 @@
+## Here is syntax highlighting for nasm assembly files
+## also this is sort of my assembly referance
+
+syntax "nasm" "\.(asm)$"
+## Highlight instructions
+
+color red "^([[:space:]]+)?(call|lea|mov([sz]x)?|pop|push|ret|test|cmp|xchg)"
+
+## jumps
+color red "^([[:space:]]+)?(j(n?[ze]|mp|))"
+
+## Bit instructions
+color red "^([[:space:]]+)?(not|xor)"
+
+## Arethmatic instructions
+color red "^([[:space:]]+)?(add|sub|inc|dec|neg)"
+
+## Flag clearing/setting instructions
+color red "^([[:space:]]+)?(((cl|st)d))"
+
+
+## assembler directives
+color red "([[:space:]]+)(db|equ|times|res[bwdq]?)(([[:space:]]+)|$)"
+
+## instructions supporting prefixes
+color red "^([[:space:]]+)?((rep)(e|z|(n[ez]))?)?([[:space:]]+)(scas[bwdq]?|movs[bwdq]?|cmps[bwdq]?)"
+
+
+
+
+
+
+## Sections
+color blue "^([[:space:]]+)?section"
+color green "\.(text|data|bss)"
+
+## nasm keywords
+color brightcyan "^([[:space:]]+)?(default|extern|global|struc|endstruc)"
+
+## labels
+color brightblue "^([[:space:].]+)?[a-zA-Z0-9_]+:"
+
+## numerical constants (integers only)
+color yellow "([[:space:],:])([0-9]+|([a-fA-F0-9]+h)|(0x[a-fA-F0-9]+))([[:space:],]|$)"
+
+
+## comments
+color brightblack ";.*$"
+
+
+## macros
+color magenta "%[a-zA-Z0-9_]+"
+
+
+## Highlight strings (note: VERY resource intensive)
+color brightyellow "<[^= 	]*>" ""(\\.|[^"])*""
+color brightyellow start=""(\\.|[^"])*\\[[:space:]]*$" end="^(\\.|[^"])*""
+
+color brightyellow "<[^= 	]*>" "'(\\.|[^'])*'"
+color brightyellow start="'(\\.|[^'])*\\[[:space:]]*$" end="^(\\.|[^'])*'"
+
+
+
+
+#color green "\.(align|file|globl|global|hidden|section|size|type|weak)"
+#color brightyellow "\.(ascii|asciz|byte|double|float|hword|int|long|short|single|struct|word)"
+#icolor brightred "^[[:space:]]*[.0-9A-Z_]*:"
+#color brightcyan "^[[:space:]]*#[[:space:]]*(define|undef|include|ifn?def|endif|elif|else|if|warning|error)"
+## Highlight comments
+#color brightblue "//.*"
+#color brightblue start="/\*" end="\*/"
+
+## Highlight trailing whitespace
+#color ,green "[[:space:]]+$"
