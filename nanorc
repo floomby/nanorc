@@ -39,6 +39,7 @@ include ~/.nano/markdown.nanorc
 include ~/.nano/mpdconf.nanorc
 include ~/.nano/mutt.nanorc
 include ~/.nano/nanorc.nanorc
+include ~/.nano/nasm.nanorc
 include ~/.nano/nginx.nanorc
 include ~/.nano/patch.nanorc
 include ~/.nano/peg.nanorc
