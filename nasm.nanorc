@@ -4,26 +4,26 @@
 syntax "nasm" "\.(asm)$"
 ## Highlight instructions
 
-color red "^([[:space:]]+)?(call|lea|mov([sz]x)?|pop|push|ret|test|cmp|xchg)"
+color red "^([[:space:]]+)?(times [0-9]+ )?(call|lea|mov([sz]x)?|pop|push|ret|test|cmp|xchg|int)"
 
 ## jumps
-color red "^([[:space:]]+)?(j(n?[ze]|mp|))"
+color red "^([[:space:]]+)?(times [0-9]+ )?(j(n?[ze]|mp|[al]))"
 
 ## Bit instructions
-color red "^([[:space:]]+)?(not|xor)"
+color red "^([[:space:]]+)?(times [0-9]+ )?(and|not|xor|(ro[rl]))"
 
-## Arethmatic instructions
-color red "^([[:space:]]+)?(add|sub|inc|dec|neg)"
+## Arathmatic instructions
+color red "^([[:space:]]+)?(times [0-9]+ )?(add|sub|inc|dec|neg)"
 
 ## Flag clearing/setting instructions
-color red "^([[:space:]]+)?(((cl|st)d))"
+color red "^([[:space:]]+)?(times [0-9]+ )?(((cl|st)d))"
 
 
-## assembler directives
-color red "([[:space:]]+)(db|equ|times|res[bwdq]?)(([[:space:]]+)|$)"
+## pseudo instructions
+color red "([[:space:]]+)(times [0-9]+ )?(db|equ|res[bwdq]?)(([[:space:]]+)|$)"
 
 ## instructions supporting prefixes
-color red "^([[:space:]]+)?((rep)(e|z|(n[ez]))?)?([[:space:]]+)(scas[bwdq]?|movs[bwdq]?|cmps[bwdq]?)"
+color red "^([[:space:]]+)?(times [0-9]+ )?((rep)(e|z|(n[ez]))?)?([[:space:]]+)(scas[bwdq]?|movs[bwdq]?|cmps[bwdq]?)"
 
 
 
@@ -49,7 +49,7 @@ color brightblack ";.*$"
 
 
 ## macros
-color magenta "%[a-zA-Z0-9_]+"
+color magenta "%%?[a-zA-Z0-9_]+"
 
 
 ## Highlight strings (note: VERY resource intensive)
